@@ -38,7 +38,7 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-var res = expr.match(/.{1,10}/g);
+/*var res = expr.match(/.{1,10}/g);
 var res1 = [];
 for (var i=0; i< res.length; i ++)
     if (res[i] = '**********')
@@ -52,8 +52,27 @@ for (var i=0; i< res.length; i ++)
                 res[j] = '.'
             else 
                 res[j] = '-'
-    }   
+    }   */
   
+
+    var res = expr.match(/.{1,10}/g);
+    var res2 = []; 
+    var res3 = []; 
+    var res4 = []; 
+    for (var i=0; i< res.length; i ++)
+     { if(res[i] == '**********')
+           { res2.push(' ');
+           }
+        else
+        {res3 = res[i].replace(/^0+/, '');
+            res4 = res3.match(/.{1,2}/g);
+            for (var j=0; j< res4.length; j++)
+                if (res4[j] == '10')
+                {res2.push('.');}
+                else 
+                {res2.push('-');}
+        }}
+
 
 
 }
