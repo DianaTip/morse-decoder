@@ -41,7 +41,10 @@ function decode(expr) {
 var res = expr.match(/.{1,10}/g);
 var res1 = [];
 for (var i=0; i< res.length; i ++)
-    res[i] = res[i].replace(/^0+/, '');
+    if (res[i] = '**********')
+        res[i] = ' '
+        else
+    {res[i] = res[i].replace(/^0+/, '');
     for (var i=0; i< res.length; i++)
         res1 = res[i].match(/.{1,2}/g);
         for (var j=0; j< res1.length; j++)
@@ -49,7 +52,7 @@ for (var i=0; i< res.length; i ++)
                 res[j] = '.'
             else 
                 res[j] = '-'
-       
+    }   
   
 
 
