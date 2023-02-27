@@ -38,43 +38,22 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-/*var res = expr.match(/.{1,10}/g);
-var res1 = [];
-for (var i=0; i< res.length; i ++)
-    if (res[i] = '**********')
-        res[i] = ' '
-        else
-    {res[i] = res[i].replace(/^0+/, '');
-    for (var i=0; i< res.length; i++)
-        res1 = res[i].match(/.{1,2}/g);
-        for (var j=0; j< res1.length; j++)
-            if (res1[j] == '10')
-                res[j] = '.'
-            else 
-                res[j] = '-'
-    }   */
-  
-
     var res = expr.match(/.{1,10}/g);
-    var res2 = []; 
-    var res3 = []; 
-    var res4 = []; 
-    for (var i=0; i< res.length; i ++)
-     { if(res[i] == '**********')
-           { res2.push(' ');
-           }
-        else
-        {res3 = res[i].replace(/^0+/, '');
-            res4 = res3.match(/.{1,2}/g);
-            for (var j=0; j< res4.length; j++)
-                if (res4[j] == '10')
-                {res2.push('.');}
-                else 
-                {res2.push('-');}
-        }}
-
-
-
+    var res1 = []; 
+    var res2 = [];
+      for (var i=0; i< res.length; i ++)
+         {if(res[i] == '**********')
+            {res2.push(' ');}
+            else
+            {res1 = res[i].replace(/^0+/, '');
+             res1 = res1.replace( /10/g, '.');
+             res1 = res1.replace( /11/g, '-');
+             if (MORSE_TABLE[res1])
+               { res2.push(MORSE_TABLE[res1]);}
+              }
+            }
+    
+return res2.join('')
 }
 
 module.exports = {
